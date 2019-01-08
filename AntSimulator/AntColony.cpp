@@ -2,9 +2,9 @@
 
 AntColony::AntColony()
 {
-	antTexture.loadFromFile("res\\textures\\ant.png");
-	littleAntTexture.loadFromFile("res\\textures\\little_ant.png");
-	larvaTexture.loadFromFile("res\\textures\\larva.png");
+	antTexture.loadFromFile("Resources\\textures\\ant.png");
+	littleAntTexture.loadFromFile("Resources\\textures\\little_ant.png");
+	larvaTexture.loadFromFile("Resources\\textures\\larva.png");
 	antListCreate();
 }
 
@@ -16,7 +16,7 @@ void AntColony::antListCreate()
 {
 	for (size_t i = 0; i < ___ANTS_COUNT___; ++i)
 	{
-		Ant ant(&antTexture, sf::Vector2u(4, 4), 0.1f, 100.0f);
+		Ant ant(&antTexture, sf::Vector2u(4, 4), 0.1f, 100.0f, randomPosition());
 		antList.push_back(ant);
 	}
 }
@@ -158,4 +158,9 @@ void AntColony::littleAntListDraw(sf::RenderWindow & window)
 		window.draw(it->healthBarBackgroud);
 		window.draw(it->healthBar);
 	}
+}
+
+sf::Vector2f AntColony::randomPosition()
+{
+	return sf::Vector2f(float((rand() % (___WIDTH___ / 50)) * 50), float((rand() % (___HEIGHT___ / 50)) * 50));
 }

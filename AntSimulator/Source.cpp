@@ -12,7 +12,7 @@ int main()
 	window.setFramerateLimit(60);
 
 	sf::Texture terrainTexture;
-	terrainTexture.loadFromFile("res\\textures\\terrain.png");
+	terrainTexture.loadFromFile("Resources\\textures\\terrain.png");
 	//rysowanie mapy
 	Terrain terrain;
 	terrain.createMap(&terrainTexture);

@@ -19,6 +19,7 @@ public:
 	void littleAntListGetNewPosition(std::list<Terrain> &map);
 	void littleAntListUpdatePosition(float deltaTime);
 	void littleAntListDraw(sf::RenderWindow &window);
+	sf::Vector2f randomPosition();
 
 private:
 	void antListCreate();
