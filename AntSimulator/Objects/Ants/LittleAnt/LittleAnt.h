@@ -1,6 +1,6 @@
 #pragma once
-#include "Object.h"
-#include "Animation.h"
+#include "../../Object.h"
+#include "../../../Animation/Animation.h"
 
 class LittleAnt : public Object
 {

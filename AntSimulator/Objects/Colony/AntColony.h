@@ -1,8 +1,8 @@
 #pragma once
-#include "Ant.h"
-#include "LittleAnt.h"
-#include "Larva.h"
-#include "Terrain.h"
+#include "../Ants/Ant/Ant.h"
+#include "../Ants/Larva/Larva.h"
+#include "../Ants/LittleAnt/LittleAnt.h"
+#include "../Terrain/Terrain.h"
 
 class AntColony
 {

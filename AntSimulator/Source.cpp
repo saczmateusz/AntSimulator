@@ -1,6 +1,6 @@
 #include "definitions.h"
-#include "Terrain.h"
-#include "AntColony.h"
+#include "Objects/Terrain/Terrain.h"
+#include "Objects/Colony/AntColony.h"
 
 int main()
 {

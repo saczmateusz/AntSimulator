@@ -135,24 +135,24 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Animation.cpp" />
-    <ClCompile Include="Ant.cpp" />
-    <ClCompile Include="AntColony.cpp" />
-    <ClCompile Include="Larva.cpp" />
-    <ClCompile Include="LittleAnt.cpp" />
-    <ClCompile Include="Object.cpp" />
+    <ClCompile Include="Animation\Animation.cpp" />
+    <ClCompile Include="Objects\Ants\Ant\Ant.cpp" />
+    <ClCompile Include="Objects\Ants\Larva\Larva.cpp" />
+    <ClCompile Include="Objects\Ants\LittleAnt\LittleAnt.cpp" />
+    <ClCompile Include="Objects\Colony\AntColony.cpp" />
+    <ClCompile Include="Objects\Object.cpp" />
+    <ClCompile Include="Objects\Terrain\Terrain.cpp" />
     <ClCompile Include="Source.cpp" />
-    <ClCompile Include="Terrain.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Animation.h" />
-    <ClInclude Include="Ant.h" />
-    <ClInclude Include="AntColony.h" />
+    <ClInclude Include="Animation\Animation.h" />
     <ClInclude Include="definitions.h" />
-    <ClInclude Include="Larva.h" />
-    <ClInclude Include="LittleAnt.h" />
-    <ClInclude Include="Object.h" />
-    <ClInclude Include="Terrain.h" />
+    <ClInclude Include="Objects\Ants\Ant\Ant.h" />
+    <ClInclude Include="Objects\Ants\Larva\Larva.h" />
+    <ClInclude Include="Objects\Ants\LittleAnt\LittleAnt.h" />
+    <ClInclude Include="Objects\Colony\AntColony.h" />
+    <ClInclude Include="Objects\Object.h" />
+    <ClInclude Include="Objects\Terrain\Terrain.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -1,5 +1,5 @@
 #pragma once
-#include "LittleAnt.h"
+#include "../LittleAnt/LittleAnt.h"
 
 
 class Ant : public LittleAnt
