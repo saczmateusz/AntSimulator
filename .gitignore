@@ -1,5 +1,7 @@
 SFML
 .vs
 Debug
+Release
 AntSimulator/Debug
+AntSimulator/Release
 DevTextures

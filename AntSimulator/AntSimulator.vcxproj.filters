@@ -26,6 +26,8 @@
     <ClCompile Include="Objects\Colony\AntColony.cpp" />
     <ClCompile Include="Objects\Terrain\Terrain.cpp" />
     <ClCompile Include="Objects\Object.cpp" />
+    <ClCompile Include="Objects\ControlPanel\ControlPanel.cpp" />
+    <ClCompile Include="Objects\ControlPanel\TextFields\TextField.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="definitions.h" />
@@ -36,5 +38,7 @@
     <ClInclude Include="Objects\Colony\AntColony.h" />
     <ClInclude Include="Objects\Terrain\Terrain.h" />
     <ClInclude Include="Objects\Object.h" />
+    <ClInclude Include="Objects\ControlPanel\ControlPanel.h" />
+    <ClInclude Include="Objects\ControlPanel\TextFields\TextField.h" />
   </ItemGroup>
 </Project>

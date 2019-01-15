@@ -1,6 +1,7 @@
 #include "definitions.h"
 #include "Objects/Terrain/Terrain.h"
 #include "Objects/Colony/AntColony.h"
+#include "Objects/ControlPanel/ControlPanel.h"
 
 int main()
 {
@@ -8,7 +9,7 @@ int main()
 	sf::Clock clock, clock2;
 	clock2.restart();
 	unsigned long long timer = 0;
-	sf::RenderWindow window(sf::VideoMode(___WIDTH___, ___HEIGHT___), "Lulz", sf::Style::Close);
+	sf::RenderWindow window(sf::VideoMode(___WIDTH___ + 300, ___HEIGHT___), "Ant Simulator", sf::Style::Close);
 	window.setFramerateLimit(60);
 
 	sf::Texture terrainTexture;
@@ -20,6 +21,8 @@ int main()
 	//rysowanie mrowkow
 	AntColony antColony;
 	//ants.createList(&antTexture);
+
+	ControlPanel controlPanel;
 
 	sf::Vector2f mpos(0.0f, 0.0f);
 
@@ -44,8 +47,15 @@ int main()
 			}
 		}
 
-		if (timer >= 120 && timer % 120 == 0)
+		while (sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
 		{
+			sf::sleep(sf::seconds(deltaTime));
+		}
+
+
+		if (timer >= 70 && timer % 70 == 0)
+		{
+			std::cout << "Round #" << timer / 70 << std::endl;
 			antColony.antListGetNewPosition(terrain.getMap());
 			antColony.antListReproduce();
 			antColony.littleAntListGetNewPosition(terrain.getMap());
@@ -62,6 +72,7 @@ int main()
 		antColony.larvaListDraw(window);
 		antColony.littleAntListDraw(window);
 		antColony.antListDraw(window);
+		controlPanel.draw(window);
 		window.display();
 		++timer;
 	}

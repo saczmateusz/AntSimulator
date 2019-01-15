@@ -23,11 +23,10 @@ void AntColony::antListCreate()
 
 void AntColony::antListGetNewPosition(std::list<Terrain>& map)
 {
-	std::list<Ant> newAnts;
-
-	for (std::list<Ant>::iterator it = antList.begin(); it != antList.end(); ++it)
+	std::list<Ant>::iterator it = antList.begin();
+	while (it != antList.end())
 	{
-		std::cout << "Ant pos: " << it->getPosition().x << " " << it->getPosition().y << std::endl;
+		std::cout << "Ant age: " << it->age << std::endl;
 		std::list<Terrain>::iterator tile = map.begin();
 		std::advance(tile, ((___WIDTH___ / 50) * (it->getPosition().y / 50) + (it->getPosition().x / 50)));
 		if (tile->checkTile())
@@ -35,15 +34,24 @@ void AntColony::antListGetNewPosition(std::list<Terrain>& map)
 		else if (it->getHealth() < ___ANT_MAX_HEALTH___)
 			it->changeHealth(1);
 		it->setHealthBar(it->getHealth());
-		std::cout << "Ant HP: " << it->getHealth() << std::endl;
-		if (it->getHealth() >= 0)
+		if (it->getHealth() >= 0 && it->getHealth() <= ___ANT_MAX_HEALTH___)
 		{
-			it->nextPosition = it->randomPosition(it->getPosition());
-			++(it->fertility);
-			newAnts.push_back(*it);
+			if (!(it->isDying()))
+			{
+				it->nextPosition = it->randomPosition(it->getPosition());
+				++(it->fertility);
+				++(it->age);
+				++it;
+			}
+			else
+			{
+				std::cout << "ant died\n";
+				it = antList.erase(it);
+			}
 		}
+		else
+			it = antList.erase(it);
 	}
-	antList = newAnts;
 }
 
 void AntColony::antListReproduce()
@@ -76,8 +84,6 @@ void AntColony::antListDraw(sf::RenderWindow & window)
 	for (std::list<Ant>::iterator it = antList.begin(); it != antList.end(); it++)
 	{
 		it->draw(window);
-		window.draw(it->healthBarBackgroud);
-		window.draw(it->healthBar);
 	}
 }
 
@@ -89,8 +95,8 @@ void AntColony::larvaListAdd(sf::Vector2f position)
 
 void AntColony::larvaListUpdate()
 {
-	std::list<Larva> newLarvas;
-	for (std::list<Larva>::iterator it = larvaList.begin(); it != larvaList.end(); it++)
+	std::list<Larva>::iterator it = larvaList.begin();
+	while (it != larvaList.end())
 	{
 		if (it->nextStage())
 		{
@@ -99,10 +105,11 @@ void AntColony::larvaListUpdate()
 				LittleAnt littleAnt(&littleAntTexture, sf::Vector2u(4, 4), 0.1f, 100.0f, it->getPosition());
 				littleAntList.push_back(littleAnt);
 			}
+			it = larvaList.erase(it);
 		}
-		else newLarvas.push_back(*it);
+		else 
+			++it;
 	}
-	larvaList = newLarvas;
 }
 
 void AntColony::larvaListDraw(sf::RenderWindow & window)
@@ -115,11 +122,9 @@ void AntColony::larvaListDraw(sf::RenderWindow & window)
 
 void AntColony::littleAntListGetNewPosition(std::list<Terrain>& map)
 {
-	std::list<LittleAnt> newLittleAnts;
-
-	for (std::list<LittleAnt>::iterator it = littleAntList.begin(); it != littleAntList.end(); ++it)
+	std::list<LittleAnt>::iterator it = littleAntList.begin();
+	while (it != littleAntList.end())
 	{
-		std::cout << "Little ant pos: " << it->getPosition().x << " " << it->getPosition().y << std::endl;
 		std::list<Terrain>::iterator tile = map.begin();
 		std::advance(tile, ((___WIDTH___ / 50) * (it->getPosition().y / 50) + (it->getPosition().x / 50)));
 		if (tile->checkTile())
@@ -127,8 +132,7 @@ void AntColony::littleAntListGetNewPosition(std::list<Terrain>& map)
 		else if (it->getHealth() < ___ANT_MAX_HEALTH___)
 			it->changeHealth(1);
 		it->setHealthBar(it->getHealth());
-		std::cout << "Little ant HP: " << it->getHealth() << std::endl;
-		if (it->getHealth() >= 0)
+		if (it->getHealth() >= 0 && it->getHealth() <= ___ANT_MAX_HEALTH___)
 		{
 			it->nextPosition = it->randomPosition(it->getPosition());
 			++(it->age);
@@ -136,12 +140,14 @@ void AntColony::littleAntListGetNewPosition(std::list<Terrain>& map)
 			{
 				Ant ant(&antTexture, sf::Vector2u(4, 4), 0.1f, 100.0f, it->getPosition());
 				antList.push_back(ant);
+				it = littleAntList.erase(it);
 			}
 			else
-				newLittleAnts.push_back(*it);
+				++it;
 		}
+		else
+			it = littleAntList.erase(it);
 	}
-	littleAntList = newLittleAnts;
 }
 
 void AntColony::littleAntListUpdatePosition(float deltaTime)
@@ -155,8 +161,6 @@ void AntColony::littleAntListDraw(sf::RenderWindow & window)
 	for (std::list<LittleAnt>::iterator it = littleAntList.begin(); it != littleAntList.end(); it++)
 	{
 		it->draw(window);
-		window.draw(it->healthBarBackgroud);
-		window.draw(it->healthBar);
 	}
 }
 

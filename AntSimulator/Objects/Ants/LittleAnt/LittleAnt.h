@@ -12,7 +12,8 @@ public:
 	void initHealthBar();
 	void setHealthBar(unsigned int health);
 	void changeHealth(int change);
-	const int getHealth() const;
+	void draw(sf::RenderWindow &window);
+	const unsigned int getHealth() const;
 
 
 public:
@@ -21,7 +22,7 @@ public:
 	sf::Vector2f nextPosition;
 	Animation animation;
 	unsigned int row;
-	int health;
+	unsigned int health;
 	float speed;
 	char direction;
 	unsigned int age;

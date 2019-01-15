@@ -126,6 +126,13 @@ void LittleAnt::changeHealth(int change)
 	health += change;
 }
 
+void LittleAnt::draw(sf::RenderWindow & window)
+{
+	window.draw(body);
+	window.draw(healthBarBackgroud);
+	window.draw(healthBar);
+}
+
 void LittleAnt::initHealthBar()
 {
 	healthBarBackgroud.setPosition(sf::Vector2f(getPosition().x + 5, getPosition().y + 1));
@@ -143,7 +150,7 @@ void LittleAnt::setHealthBar(unsigned int health)
 	healthBar.setSize(sf::Vector2f(health * (___ANT_HEALTH_BAR_WIDTH___ / ___ANT_MAX_HEALTH___), ___ANT_HEALTH_BAR_HEIGHT___));
 }
 
-const int LittleAnt::getHealth() const
+const unsigned int LittleAnt::getHealth() const
 {
 	return health;
 }

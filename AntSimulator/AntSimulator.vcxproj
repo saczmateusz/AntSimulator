@@ -136,6 +136,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Animation\Animation.cpp" />
+    <ClCompile Include="Objects\ControlPanel\ControlPanel.cpp" />
     <ClCompile Include="Objects\Ants\Ant\Ant.cpp" />
     <ClCompile Include="Objects\Ants\Larva\Larva.cpp" />
     <ClCompile Include="Objects\Ants\LittleAnt\LittleAnt.cpp" />
@@ -143,9 +144,11 @@
     <ClCompile Include="Objects\Object.cpp" />
     <ClCompile Include="Objects\Terrain\Terrain.cpp" />
     <ClCompile Include="Source.cpp" />
+    <ClCompile Include="Objects\ControlPanel\TextFields\TextField.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Animation\Animation.h" />
+    <ClInclude Include="Objects\ControlPanel\ControlPanel.h" />
     <ClInclude Include="definitions.h" />
     <ClInclude Include="Objects\Ants\Ant\Ant.h" />
     <ClInclude Include="Objects\Ants\Larva\Larva.h" />
@@ -153,6 +156,7 @@
     <ClInclude Include="Objects\Colony\AntColony.h" />
     <ClInclude Include="Objects\Object.h" />
     <ClInclude Include="Objects\Terrain\Terrain.h" />
+    <ClInclude Include="Objects\ControlPanel\TextFields\TextField.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
