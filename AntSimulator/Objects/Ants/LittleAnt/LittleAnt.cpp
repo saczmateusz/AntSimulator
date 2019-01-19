@@ -4,7 +4,7 @@ LittleAnt::LittleAnt(sf::Texture * texture, sf::Vector2u imageCount, float switc
 	: animation(texture, imageCount, switchTime)
 {
 	this->speed = speed;
-	health = ___ANT_MAX_HEALTH___;
+	health = Parameters::AntMaxHealth;
 	direction = ___UP___;
 	body.setSize(sf::Vector2f(50.0f, 50.0f));
 	body.setPosition(position);
@@ -142,12 +142,12 @@ void LittleAnt::initHealthBar()
 	healthBarBackgroud.setFillColor(sf::Color(255, 0, 0));
 	healthBar.setPosition(sf::Vector2f(getPosition().x + 5, getPosition().y + 1));
 	healthBar.setFillColor(sf::Color(50, 150, 50));
-	setHealthBar(___ANT_MAX_HEALTH___);
+	setHealthBar(Parameters::AntMaxHealth);
 }
 
 void LittleAnt::setHealthBar(unsigned int health)
 {
-	healthBar.setSize(sf::Vector2f(health * (___ANT_HEALTH_BAR_WIDTH___ / ___ANT_MAX_HEALTH___), ___ANT_HEALTH_BAR_HEIGHT___));
+	healthBar.setSize(sf::Vector2f(health * (___ANT_HEALTH_BAR_WIDTH___ / Parameters::AntMaxHealth), ___ANT_HEALTH_BAR_HEIGHT___));
 }
 
 const unsigned int LittleAnt::getHealth() const

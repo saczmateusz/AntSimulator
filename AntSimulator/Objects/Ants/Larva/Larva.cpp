@@ -6,7 +6,7 @@ Larva::Larva(sf::Texture * texture, sf::Vector2f position)
 	body.setPosition(position);
 	body.setTexture(texture);
 	age = 0;
-	newAntsCount = rand() % ___MAX_TRANSFORM_COUNT___ + 1;
+	newAntsCount = rand() % Parameters::LarvaMaxBrood + 1;
 }
 
 
@@ -17,7 +17,7 @@ Larva::~Larva()
 bool Larva::nextStage()
 {
 	++age;
-	if (age >= ___LARVA_TRANSFORM_TIME___)
+	if (age >= Parameters::LarvaTransformAge)
 		return true;
 	else return false;
 }

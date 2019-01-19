@@ -143,6 +143,8 @@
     <ClCompile Include="Objects\Colony\AntColony.cpp" />
     <ClCompile Include="Objects\Object.cpp" />
     <ClCompile Include="Objects\Terrain\Terrain.cpp" />
+    <ClCompile Include="Parameters.cpp" />
+    <ClCompile Include="Simulation\Simulation.cpp" />
     <ClCompile Include="Source.cpp" />
     <ClCompile Include="Objects\ControlPanel\TextFields\TextField.cpp" />
   </ItemGroup>
@@ -157,6 +159,8 @@
     <ClInclude Include="Objects\Object.h" />
     <ClInclude Include="Objects\Terrain\Terrain.h" />
     <ClInclude Include="Objects\ControlPanel\TextFields\TextField.h" />
+    <ClInclude Include="Parameters.h" />
+    <ClInclude Include="Simulation\Simulation.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

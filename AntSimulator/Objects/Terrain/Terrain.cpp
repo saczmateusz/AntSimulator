@@ -81,8 +81,9 @@ void Terrain::switchTile(bool factor)
 	tRect.left = factor * tRect.width;
 	body.setTextureRect(tRect);
 	if (factor)
-		cooldown = 10;
+		cooldown = Parameters::TerrainRegTime;
 	else cooldown = -1;
+	std::cout << Parameters::TerrainRegTime << std::endl;
 }
 
 bool Terrain::texRand()

@@ -6,15 +6,21 @@ class ControlPanel : public Object
 public:
 	ControlPanel();
 	~ControlPanel();
+	void healthUpdate(bool change);
+	void lifeLengthUpdate(int change);
+	void adulthoodUpdate(int change);
+	void transformUpdate(int change);
+	void broodUpdate(int change);
+	void fertilityUpdate(int change);
+	void terrainRegUpdate(int change);
+	
+
+
 	void draw(sf::RenderWindow &window);
-
-
-	//temp
-	TextField parameters[6];
 
 private:
 	sf::Font font;
 	sf::Texture texture;
-	//std::list<TextField> parameters;
+	TextField parameters[7];
 };
 

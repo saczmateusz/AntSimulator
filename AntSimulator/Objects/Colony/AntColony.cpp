@@ -16,7 +16,7 @@ void AntColony::antListCreate()
 {
 	for (size_t i = 0; i < ___ANTS_COUNT___; ++i)
 	{
-		Ant ant(&antTexture, sf::Vector2u(4, 4), 0.1f, 100.0f, randomPosition());
+		Ant ant(&antTexture, sf::Vector2u(4, 4), 0.1f, ___MOVEMENT_SPEED___, randomPosition());
 		antList.push_back(ant);
 	}
 }
@@ -31,10 +31,10 @@ void AntColony::antListGetNewPosition(std::list<Terrain>& map)
 		std::advance(tile, ((___WIDTH___ / 50) * (it->getPosition().y / 50) + (it->getPosition().x / 50)));
 		if (tile->checkTile())
 			it->changeHealth(-1);
-		else if (it->getHealth() < ___ANT_MAX_HEALTH___)
+		else if (it->getHealth() < Parameters::AntMaxHealth)
 			it->changeHealth(1);
 		it->setHealthBar(it->getHealth());
-		if (it->getHealth() >= 0 && it->getHealth() <= ___ANT_MAX_HEALTH___)
+		if (it->getHealth() >= 0 && it->getHealth() <= Parameters::AntMaxHealth)
 		{
 			if (!(it->isDying()))
 			{
@@ -58,11 +58,11 @@ void AntColony::antListReproduce()
 {
 	for (std::list<Ant>::iterator it = antList.begin(); it != antList.end(); ++it)
 	{
-		if (it->fertility >= ___MIN_FERTILITY___)
+		if (it->fertility >= Parameters::AntMinFertility)
 		{
 			for (std::list<Ant>::iterator prev = antList.begin(); prev != it; ++prev)
 			{
-				if (it->getPosition() == prev->getPosition() && prev->fertility >= ___MIN_FERTILITY___)
+				if (it->getPosition() == prev->getPosition() && prev->fertility >= Parameters::AntMinFertility)
 				{
 					larvaListAdd(it->getPosition());
 					it->fertility = 0;
@@ -102,7 +102,7 @@ void AntColony::larvaListUpdate()
 		{
 			for (size_t i = 0; i < it->getNewAntsCount(); ++i)
 			{
-				LittleAnt littleAnt(&littleAntTexture, sf::Vector2u(4, 4), 0.1f, 100.0f, it->getPosition());
+				LittleAnt littleAnt(&littleAntTexture, sf::Vector2u(4, 4), 0.1f, ___MOVEMENT_SPEED___, it->getPosition());
 				littleAntList.push_back(littleAnt);
 			}
 			it = larvaList.erase(it);
@@ -129,16 +129,16 @@ void AntColony::littleAntListGetNewPosition(std::list<Terrain>& map)
 		std::advance(tile, ((___WIDTH___ / 50) * (it->getPosition().y / 50) + (it->getPosition().x / 50)));
 		if (tile->checkTile())
 			it->changeHealth(-1);
-		else if (it->getHealth() < ___ANT_MAX_HEALTH___)
+		else if (it->getHealth() < Parameters::AntMaxHealth)
 			it->changeHealth(1);
 		it->setHealthBar(it->getHealth());
-		if (it->getHealth() >= 0 && it->getHealth() <= ___ANT_MAX_HEALTH___)
+		if (it->getHealth() >= 0 && it->getHealth() <= Parameters::AntMaxHealth)
 		{
 			it->nextPosition = it->randomPosition(it->getPosition());
 			++(it->age);
-			if (it->age > ___ADULTHOOD___)
+			if (it->age > Parameters::AntAdulthoodAge)
 			{
-				Ant ant(&antTexture, sf::Vector2u(4, 4), 0.1f, 100.0f, it->getPosition());
+				Ant ant(&antTexture, sf::Vector2u(4, 4), 0.1f, ___MOVEMENT_SPEED___, it->getPosition());
 				antList.push_back(ant);
 				it = littleAntList.erase(it);
 			}
