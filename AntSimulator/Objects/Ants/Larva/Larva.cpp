@@ -17,9 +17,7 @@ Larva::~Larva()
 bool Larva::nextStage()
 {
 	++age;
-	if (age >= Parameters::LarvaTransformAge)
-		return true;
-	else return false;
+	return age >= Parameters::LarvaTransformAge;
 }
 
 unsigned int Larva::getNewAntsCount()
