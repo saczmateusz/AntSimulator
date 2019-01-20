@@ -4,9 +4,9 @@
 class Object
 {
 public:
-	void draw(sf::RenderWindow &window);
-	const sf::Vector2f getPosition() const;
+	void draw(RenderWindow &window);
+	const Vector2f getPosition() const;
 
 protected:
-	sf::RectangleShape body;
+	RectangleShape body;
 };

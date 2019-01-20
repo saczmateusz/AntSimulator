@@ -1,12 +1,12 @@
 #include "LittleAnt.h"
 
-LittleAnt::LittleAnt(sf::Texture * texture, sf::Vector2u imageCount, float switchTime, float speed, sf::Vector2f position)
+LittleAnt::LittleAnt(Texture * texture, Vector2u imageCount, float switchTime, float speed, Vector2f position)
 	: animation(texture, imageCount, switchTime)
 {
 	this->speed = speed;
 	health = Parameters::AntMaxHealth;
 	direction = ___UP___;
-	body.setSize(sf::Vector2f(50.0f, 50.0f));
+	body.setSize(Vector2f(50.0f, 50.0f));
 	body.setPosition(position);
 	body.setTexture(texture);
 	nextPosition = body.getPosition();
@@ -18,9 +18,9 @@ LittleAnt::~LittleAnt()
 {
 }
 
-void LittleAnt::moveToFixedPosition(float deltaTime, sf::Vector2f movement)
+void LittleAnt::moveToFixedPosition(float deltaTime, Vector2f movement)
 {
-	sf::Vector2f position(getPosition());
+	Vector2f position(getPosition());
 	if (position.x < movement.x)
 	{
 		position.x += speed * deltaTime;
@@ -64,14 +64,14 @@ void LittleAnt::moveToFixedPosition(float deltaTime, sf::Vector2f movement)
 	animation.update(row, deltaTime, direction);
 	body.setTextureRect(animation.aRect);
 	body.setPosition(position);
-	healthBarBackgroud.setPosition(sf::Vector2f(getPosition().x + 5, getPosition().y + 1));
-	healthBar.setPosition(sf::Vector2f(getPosition().x + 5, getPosition().y + 1));
+	healthBarBackgroud.setPosition(Vector2f(getPosition().x + 5, getPosition().y + 1));
+	healthBar.setPosition(Vector2f(getPosition().x + 5, getPosition().y + 1));
 }
 
-sf::Vector2f LittleAnt::randomPosition(sf::Vector2f position)
+Vector2f LittleAnt::randomPosition(Vector2f position)
 {
 	unsigned int random = rand() % 8;
-	sf::Vector2f newPosition(position);
+	Vector2f newPosition(position);
 	switch (random)
 	{
 	case 0:
@@ -126,7 +126,7 @@ void LittleAnt::changeHealth(int change)
 	health += change;
 }
 
-void LittleAnt::draw(sf::RenderWindow & window)
+void LittleAnt::draw(RenderWindow & window)
 {
 	window.draw(body);
 	window.draw(healthBarBackgroud);
@@ -135,22 +135,22 @@ void LittleAnt::draw(sf::RenderWindow & window)
 
 void LittleAnt::initHealthBar()
 {
-	healthBarBackgroud.setPosition(sf::Vector2f(getPosition().x + 5, getPosition().y + 1));
-	healthBarBackgroud.setSize(sf::Vector2f(___ANT_HEALTH_BAR_WIDTH___, ___ANT_HEALTH_BAR_HEIGHT___));
+	healthBarBackgroud.setPosition(Vector2f(getPosition().x + 5, getPosition().y + 1));
+	healthBarBackgroud.setSize(Vector2f(___ANT_HEALTH_BAR_WIDTH___, ___ANT_HEALTH_BAR_HEIGHT___));
 	healthBarBackgroud.setOutlineThickness(1.0f);
-	healthBarBackgroud.setOutlineColor(sf::Color(0, 0, 0));
-	healthBarBackgroud.setFillColor(sf::Color(255, 0, 0));
-	healthBar.setPosition(sf::Vector2f(getPosition().x + 5, getPosition().y + 1));
-	healthBar.setFillColor(sf::Color(50, 150, 50));
+	healthBarBackgroud.setOutlineColor(Color(0, 0, 0));
+	healthBarBackgroud.setFillColor(Color(255, 0, 0));
+	healthBar.setPosition(Vector2f(getPosition().x + 5, getPosition().y + 1));
+	healthBar.setFillColor(Color(50, 150, 50));
 	setHealthBar(Parameters::AntMaxHealth);
 }
 
 void LittleAnt::setHealthBar(unsigned int health)
 {
-	healthBar.setSize(sf::Vector2f(health * (___ANT_HEALTH_BAR_WIDTH___ / Parameters::AntMaxHealth), ___ANT_HEALTH_BAR_HEIGHT___));
+	healthBar.setSize(Vector2f(health * (___ANT_HEALTH_BAR_WIDTH___ / Parameters::AntMaxHealth), ___ANT_HEALTH_BAR_HEIGHT___));
 }
 
-const unsigned int LittleAnt::getHealth() const
+const int LittleAnt::getHealth() const
 {
 	return health;
 }

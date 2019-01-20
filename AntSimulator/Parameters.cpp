@@ -1,6 +1,6 @@
 #include "Parameters.h"
 
-unsigned int Parameters::AntMaxHealth = 5;
+int Parameters::AntMaxHealth = 5;
 unsigned int Parameters::AntAvgLifeLength = 35;
 unsigned int Parameters::AntAdulthoodAge = 10;
 unsigned int Parameters::LarvaTransformAge = 8;

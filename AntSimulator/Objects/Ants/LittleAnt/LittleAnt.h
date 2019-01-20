@@ -5,24 +5,24 @@
 class LittleAnt : public Object
 {
 public:
-	LittleAnt(sf::Texture *texture, sf::Vector2u imageCount, float switchTime, float speed, sf::Vector2f position);
+	LittleAnt(Texture *texture, Vector2u imageCount, float switchTime, float speed, Vector2f position);
 	~LittleAnt();
-	sf::Vector2f randomPosition(sf::Vector2f position);
-	void moveToFixedPosition(float deltaTime, sf::Vector2f movement);
+	Vector2f randomPosition(Vector2f position);
+	void moveToFixedPosition(float deltaTime, Vector2f movement);
 	void initHealthBar();
 	void setHealthBar(unsigned int health);
 	void changeHealth(int change);
-	void draw(sf::RenderWindow &window);
-	const unsigned int getHealth() const;
+	void draw(RenderWindow &window);
+	const int getHealth() const;
 
 
 public:
-	sf::RectangleShape healthBarBackgroud;
-	sf::RectangleShape healthBar;
-	sf::Vector2f nextPosition;
+	RectangleShape healthBarBackgroud;
+	RectangleShape healthBar;
+	Vector2f nextPosition;
 	Animation animation;
 	unsigned int row;
-	unsigned int health;
+	int health;
 	float speed;
 	char direction;
 	unsigned int age;

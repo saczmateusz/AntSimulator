@@ -16,11 +16,11 @@ public:
 	
 
 
-	void draw(sf::RenderWindow &window);
+	void draw(RenderWindow &window);
 
 private:
-	sf::Font font;
-	sf::Texture texture;
+	Font font;
+	Texture texture;
 	TextField parameters[7];
 };
 

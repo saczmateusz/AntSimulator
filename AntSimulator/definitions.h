@@ -7,6 +7,7 @@
 #include "Parameters.h"
 
 using namespace std;
+using namespace sf;
 
 enum direction{
 	___UP___,

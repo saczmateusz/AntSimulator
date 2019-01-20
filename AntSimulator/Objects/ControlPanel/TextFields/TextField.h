@@ -5,14 +5,14 @@
 class TextField : public Object
 {
 public:
-	TextField(sf::Font &font, sf::Vector2f position, unsigned int parameter);
+	TextField(Font &font, Vector2f position, unsigned int parameter);
 	TextField();
 	~TextField();
 	void update(unsigned int parameter);
-	void draw(sf::RenderWindow &window);
+	void draw(RenderWindow &window);
 
 private:
-	sf::Text textField;
+	Text textField;
 	
 };
 

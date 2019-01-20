@@ -2,7 +2,7 @@
 class Parameters
 {
 public:
-	static unsigned int AntMaxHealth;
+	static int AntMaxHealth;
 	static unsigned int AntAvgLifeLength;
 	static unsigned int AntAdulthoodAge;
 	static unsigned int LarvaTransformAge;

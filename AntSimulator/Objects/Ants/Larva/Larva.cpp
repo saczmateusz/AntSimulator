@@ -1,8 +1,8 @@
 #include "Larva.h"
 
-Larva::Larva(sf::Texture * texture, sf::Vector2f position)
+Larva::Larva(Texture * texture, Vector2f position)
 {
-	body.setSize(sf::Vector2f(50.0f, 50.0f));
+	body.setSize(Vector2f(50.0f, 50.0f));
 	body.setPosition(position);
 	body.setTexture(texture);
 	age = 0;

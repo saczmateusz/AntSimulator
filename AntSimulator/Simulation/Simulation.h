@@ -16,9 +16,9 @@ private:
 
 public:
 	unsigned long long timer = 0;
-	sf::RenderWindow window;
-	sf::Clock clock;
-	sf::Texture terrainTexture;
+	RenderWindow window;
+	Clock clock;
+	Texture terrainTexture;
 
 	bool state;
 
@@ -26,7 +26,7 @@ public:
 	ControlPanel controlPanel;
 	AntColony antColony;
 
-	sf::Vector2f mpos;
+	Vector2f mpos;
 
 	float deltaTime;
 	char currDirection;

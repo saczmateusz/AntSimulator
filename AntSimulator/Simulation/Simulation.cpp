@@ -3,12 +3,12 @@
 
 
 Simulation::Simulation()
-	: window(sf::VideoMode(___WIDTH___ + 300, ___HEIGHT___), "Ant Simulator", sf::Style::Close)
+	: window(VideoMode(___WIDTH___ + 300, ___HEIGHT___), "Ant Simulator", Style::Close)
 {
 	window.setFramerateLimit(60);
 	timer = 0;
 	state = false;
-	mpos = sf::Vector2f(0.0f, 0.0f);
+	mpos = Vector2f(0.0f, 0.0f);
 	deltaTime = 0.0f;
 	currDirection = ___LEFT___;
 	terrainTexture.loadFromFile("Resources\\textures\\terrain.png");
@@ -26,47 +26,79 @@ void Simulation::run()
 	{
 		deltaTime = clock.restart().asSeconds();
 
-		sf::Event e;
+		Event e;
 		while (window.pollEvent(e))
 		{
-			if (e.type == sf::Event::Closed)
+			if (e.type == Event::Closed)
 			{
 				window.close();
 			}
 
-			if (e.type == sf::Event::KeyPressed)
+			if (e.type == Event::KeyPressed)
 			{
 				switch (e.key.code)
 				{
-				case sf::Keyboard::Escape:
+				case Keyboard::Escape:
 					window.close();
 					break;
 
-				case sf::Keyboard::Space:
+				case Keyboard::Space:
 					state = !state;
 					break;
 
-				case sf::Keyboard::Home:
+				case Keyboard::Home:
 					controlPanel.healthUpdate(false);
 					break;
 
-				case sf::Keyboard::End:
+				case Keyboard::End:
 					controlPanel.healthUpdate(true);
 					break;
 
-				case sf::Keyboard::PageUp:
+				case Keyboard::PageUp:
 					controlPanel.lifeLengthUpdate(false);
 					break;
 
-				case sf::Keyboard::PageDown:
+				case Keyboard::PageDown:
 					controlPanel.lifeLengthUpdate(true);
 					break;
 
-				case sf::Keyboard::Subtract:
+				case Keyboard::Divide:
+					controlPanel.adulthoodUpdate(false);
+					break;
+
+				case Keyboard::Multiply:
+					controlPanel.adulthoodUpdate(true);
+					break;
+
+				case Keyboard::Numpad8:
+					controlPanel.transformUpdate(false);
+					break;
+
+				case Keyboard::Numpad9:
+					controlPanel.transformUpdate(true);
+					break;
+
+				case Keyboard::Numpad5:
+					controlPanel.broodUpdate(false);
+					break;
+
+				case Keyboard::Numpad6:
+					controlPanel.broodUpdate(true);
+					break;
+
+				case Keyboard::Numpad2:
+					controlPanel.fertilityUpdate(false);
+					break;
+
+				case Keyboard::Numpad3:
+					controlPanel.fertilityUpdate(true);
+					break;
+
+				case Keyboard::Subtract:
 					controlPanel.terrainRegUpdate(false);
 					break;
 
-				case sf::Keyboard::Add:
+				case Keyboard::Add:
 					controlPanel.terrainRegUpdate(true);
 					break;
 				}
@@ -75,19 +107,19 @@ void Simulation::run()
 
 		if (timer >= ___SPEED___ && timer % ___SPEED___ == 0 && state == true)
 		{
-			std::cout << "Round #" << timer / ___SPEED___ << std::endl;
+			cout << "Round #" << timer / ___SPEED___ << endl;
 			antColony.antListGetNewPosition(terrain.getMap());
 			antColony.antListReproduce();
 			antColony.littleAntListGetNewPosition(terrain.getMap());
 			terrain.updateMap();
 			antColony.larvaListUpdate();
-			std::cout << std::endl << std::endl;
+			cout << endl << endl;
 		}
 
 		antColony.littleAntListUpdatePosition(deltaTime);
 		antColony.antListUpdatePosition(deltaTime);
 
-		window.clear(sf::Color(150, 150, 150));
+		window.clear(Color(150, 150, 150));
 		terrain.drawMap(window);
 		antColony.larvaListDraw(window);
 		antColony.littleAntListDraw(window);

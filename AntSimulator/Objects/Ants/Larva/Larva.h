@@ -4,7 +4,7 @@
 class Larva : public Object
 {
 public:
-	Larva(sf::Texture *texture, sf::Vector2f position);
+	Larva(Texture *texture, Vector2f position);
 	~Larva();
 	bool nextStage();
 	unsigned int getNewAntsCount();

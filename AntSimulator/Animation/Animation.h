@@ -4,18 +4,18 @@
 class Animation
 {
 public:
-	Animation(sf::Texture* texture, sf::Vector2u imageCount, float switchTime);
+	Animation(Texture* texture, Vector2u imageCount, float switchTime);
 	Animation();
 	~Animation();
 
 	void update(int row, float deltaTime, char direction);
 
 public:
-	sf::IntRect aRect;
+	IntRect aRect;
 
 private:
-	sf::Vector2u imageCount;
-	sf::Vector2u currentImage;
+	Vector2u imageCount;
+	Vector2u currentImage;
 
 	float totalTime;
 	float switchTime;

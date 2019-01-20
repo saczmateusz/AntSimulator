@@ -9,27 +9,27 @@ class AntColony
 public:
 	AntColony();
 	~AntColony();
-	void antListGetNewPosition(std::list<Terrain> &map);
+	void antListGetNewPosition(list<Terrain> &map);
 	void antListReproduce();
 	void antListUpdatePosition(float deltaTime);
-	void antListDraw(sf::RenderWindow &window);
-	void larvaListAdd(sf::Vector2f position);
+	void antListDraw(RenderWindow &window);
+	void larvaListAdd(Vector2f position);
 	void larvaListUpdate();
-	void larvaListDraw(sf::RenderWindow &window);
-	void littleAntListGetNewPosition(std::list<Terrain> &map);
+	void larvaListDraw(RenderWindow &window);
+	void littleAntListGetNewPosition(list<Terrain> &map);
 	void littleAntListUpdatePosition(float deltaTime);
-	void littleAntListDraw(sf::RenderWindow &window);
-	sf::Vector2f randomPosition();
+	void littleAntListDraw(RenderWindow &window);
+	Vector2f randomPosition();
 
 private:
 	void antListCreate();
 
 private:
-	std::list<Ant> antList;
-	std::list<LittleAnt> littleAntList;
-	std::list<Larva> larvaList;
-	sf::Texture antTexture;
-	sf::Texture littleAntTexture;
-	sf::Texture larvaTexture;
+	list<Ant> antList;
+	list<LittleAnt> littleAntList;
+	list<Larva> larvaList;
+	Texture antTexture;
+	Texture littleAntTexture;
+	Texture larvaTexture;
 };
 
