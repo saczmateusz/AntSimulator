@@ -1,6 +1,7 @@
 #pragma once
 #include "../Object.h"
 #include "TextFields/TextField.h"
+
 class ControlPanel : public Object
 {
 public:
@@ -13,9 +14,6 @@ public:
 	void changeMaxBrood(int change);
 	void changeFertility(int change);
 	void changeTerrainRegTime(int change);
-	
-
-
 	void draw(RenderWindow &window);
 
 private:

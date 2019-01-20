@@ -103,7 +103,7 @@ void Simulation::run()
 			}
 		}
 
-		if (timer >= ___SPEED___ && timer % ___SPEED___ == 0 && state == true)
+		if (timer >= ___SPEED___ && timer % ___SPEED___ == 0 && state)
 		{
 			antColony.antListGetNewPosition(terrain.getMap());
 			antColony.antListReproduce();

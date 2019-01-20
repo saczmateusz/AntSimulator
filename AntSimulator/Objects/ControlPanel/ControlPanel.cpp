@@ -28,77 +28,54 @@ ControlPanel::~ControlPanel()
 {
 }
 
+#define changeParam(paramname, i, a, b) {              \
+	if (change == 0)								\
+		return;										\
+													\
+	auto& param = paramname;			\
+	param = between(2, param + change, 15);			\
+	parameters[i].update(param);					\
+    }												\
+
 void ControlPanel::changeMaxHealth(const int change)
 {
-	if (change == 0)
-		return;
-
-	auto& param = Parameters::AntMaxHealth;
-	param = between(2, param + change, 15);
-	parameters[0].update(param);
+	changeParam(Parameters::AntMaxHealth, 0, 2, 15);
 }
 
 void ControlPanel::changeLifeLenght(const int change)
 {
-	if (change == 0)
-		return;
-
-	auto& param = Parameters::AntAvgLifeLength;
-	param = between(20, param + change, 90);
-	parameters[1].update(param);
+	changeParam(Parameters::AntAvgLifeLength, 1, 20, 90);
 }
 
 void ControlPanel::changeAdulthoodAge(const int change)
 {
-	if (change == 0)
-		return;
-
-	auto& param = Parameters::AntAdulthoodAge;
-	param = between(2, param + change, 30);
-	parameters[2].update(param);
+	changeParam(Parameters::AntAdulthoodAge, 2, 2, 30);
 }
 
 void ControlPanel::changeTransformAge(const int change)
 {
-	if (change == 0)
-		return;
-
-	auto& param = Parameters::LarvaTransformAge;
-	param = between(2, param + change, 30);
-	parameters[3].update(param);
+	changeParam(Parameters::LarvaTransformAge, 3, 2, 30);
 }
 
 void ControlPanel::changeMaxBrood(const int change)
 {
-	if (change == 0)
-		return;
-
-	auto& param = Parameters::LarvaMaxBrood;
-	param = between(2, param + change, 10);
-	parameters[4].update(param);
+	changeParam(Parameters::LarvaMaxBrood, 4, 2, 10);
 }
 
 void ControlPanel::changeFertility(const int change)
 {
-	if (change == 0)
-		return;
-
-	auto& param = Parameters::AntMinFertility;
-	param = between(2, param + change, 10);
-	parameters[5].update(param);
+	changeParam(Parameters::AntMinFertility, 5, 2, 10);
 }
 
 void ControlPanel::changeTerrainRegTime(const int change)
 {
-	auto& param = Parameters::TerrainRegTime;
-	param = between(1, param + change, 30);
-	parameters[6].update(param);
+	changeParam(Parameters::TerrainRegTime, 6, 1, 10);
 }
 
 void ControlPanel::draw(RenderWindow & window)
 {
 	window.draw(body);
-	
+
 	for (size_t i = 0; i < 7; ++i)
 	{
 		parameters[i].draw(window);
