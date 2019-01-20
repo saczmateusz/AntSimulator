@@ -34,7 +34,7 @@ void ControlPanel::changeMaxHealth(const int change)
 		return;
 
 	auto& param = Parameters::AntMaxHealth;
-	param = between(2, param + change, 30);
+	param = between(2, param + change, 15);
 	parameters[0].update(param);
 }
 
@@ -44,7 +44,7 @@ void ControlPanel::changeLifeLenght(const int change)
 		return;
 
 	auto& param = Parameters::AntAvgLifeLength;
-	param = between(2, param + change, 30);
+	param = between(20, param + change, 90);
 	parameters[1].update(param);
 }
 
