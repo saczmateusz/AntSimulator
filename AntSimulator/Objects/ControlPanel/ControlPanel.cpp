@@ -1,4 +1,9 @@
-#include "ControlPanel.h"
+﻿#include "ControlPanel.h"
+
+int between(int a, int b, int c)
+{
+	return max(a, min(b, c));
+}
 
 ControlPanel::ControlPanel()
 {
@@ -23,123 +28,71 @@ ControlPanel::~ControlPanel()
 {
 }
 
-void ControlPanel::healthUpdate(bool change)
+void ControlPanel::changeMaxHealth(const int change)
 {
-	if (change && Parameters::AntMaxHealth < 15)
-	{
-		++Parameters::AntMaxHealth;
-		parameters[0].update(Parameters::AntMaxHealth);
-	}
-	else
-	{
-		if (Parameters::AntMaxHealth >= 2)
-		{
-			--Parameters::AntMaxHealth;
-			parameters[0].update(Parameters::AntMaxHealth);
-		}
-	}
+	if (change == 0)
+		return;
+
+	auto& param = Parameters::AntMaxHealth;
+	param = between(2, param + change, 30);
+	parameters[0].update(param);
 }
 
-void ControlPanel::lifeLengthUpdate(int change)
+void ControlPanel::changeLifeLenght(const int change)
 {
-	if (change && Parameters::AntAvgLifeLength < 90)
-	{
-		++Parameters::AntAvgLifeLength;
-		parameters[1].update(Parameters::AntAvgLifeLength);
-	}
-	else
-	{
-		if (Parameters::AntAvgLifeLength >= 20)
-		{
-			--Parameters::AntAvgLifeLength;
-			parameters[1].update(Parameters::AntAvgLifeLength);
-		}
-	}
+	if (change == 0)
+		return;
+
+	auto& param = Parameters::AntAvgLifeLength;
+	param = between(2, param + change, 30);
+	parameters[1].update(param);
 }
 
-void ControlPanel::adulthoodUpdate(int change)
+void ControlPanel::changeAdulthoodAge(const int change)
 {
-	if (change && Parameters::AntAdulthoodAge < 30)
-	{
-		++Parameters::AntAdulthoodAge;
-		parameters[2].update(Parameters::AntAdulthoodAge);
-	}
-	else
-	{
-		if (Parameters::AntAdulthoodAge >= 2)
-		{
-			--Parameters::AntAdulthoodAge;
-			parameters[2].update(Parameters::AntAdulthoodAge);
-		}
-	}
+	if (change == 0)
+		return;
+
+	auto& param = Parameters::AntAdulthoodAge;
+	param = between(2, param + change, 30);
+	parameters[2].update(param);
 }
 
-void ControlPanel::transformUpdate(int change)
+void ControlPanel::changeTransformAge(const int change)
 {
-	if (change && Parameters::LarvaTransformAge < 30)
-	{
-		++Parameters::LarvaTransformAge;
-		parameters[3].update(Parameters::LarvaTransformAge);
-	}
-	else
-	{
-		if (Parameters::LarvaTransformAge >= 2)
-		{
-			--Parameters::LarvaTransformAge;
-			parameters[3].update(Parameters::LarvaTransformAge);
-		}
-	}
+	if (change == 0)
+		return;
+
+	auto& param = Parameters::LarvaTransformAge;
+	param = between(2, param + change, 30);
+	parameters[3].update(param);
 }
 
-void ControlPanel::broodUpdate(int change)
+void ControlPanel::changeMaxBrood(const int change)
 {
-	if (change && Parameters::LarvaMaxBrood < 10)
-	{
-		++Parameters::LarvaMaxBrood;
-		parameters[4].update(Parameters::LarvaMaxBrood);
-	}
-	else
-	{
-		if (Parameters::LarvaMaxBrood >= 2)
-		{
-			--Parameters::LarvaMaxBrood;
-			parameters[4].update(Parameters::LarvaMaxBrood);
-		}
-	}
+	if (change == 0)
+		return;
+
+	auto& param = Parameters::LarvaMaxBrood;
+	param = between(2, param + change, 10);
+	parameters[4].update(param);
 }
 
-void ControlPanel::fertilityUpdate(int change)
+void ControlPanel::changeFertility(const int change)
 {
-	if (change && Parameters::AntMinFertility < 20)
-	{
-		++Parameters::AntMinFertility;
-		parameters[5].update(Parameters::AntMinFertility);
-	}
-	else
-	{
-		if (Parameters::AntMinFertility >= 1)
-		{
-			--Parameters::AntMinFertility;
-			parameters[5].update(Parameters::AntMinFertility);
-		}
-	}
+	if (change == 0)
+		return;
+
+	auto& param = Parameters::AntMinFertility;
+	param = between(2, param + change, 10);
+	parameters[5].update(param);
 }
 
-void ControlPanel::terrainRegUpdate(int change)
+void ControlPanel::changeTerrainRegTime(const int change)
 {
-	if (change && Parameters::TerrainRegTime < 30)
-	{
-		++Parameters::TerrainRegTime;
-		parameters[6].update(Parameters::TerrainRegTime);
-	}
-	else
-	{
-		if (Parameters::TerrainRegTime >= 1)
-		{
-			--Parameters::TerrainRegTime;
-			parameters[6].update(Parameters::TerrainRegTime);
-		}
-	}
+	auto& param = Parameters::TerrainRegTime;
+	param = between(1, param + change, 30);
+	parameters[6].update(param);
 }
 
 void ControlPanel::draw(RenderWindow & window)

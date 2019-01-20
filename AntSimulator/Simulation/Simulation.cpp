@@ -24,7 +24,7 @@ void Simulation::run()
 	{
 		deltaTime = clock.restart().asSeconds();
 
-		Event e;
+		Event e{};
 		while (window.pollEvent(e))
 		{
 			if (e.type == Event::Closed)
@@ -45,59 +45,59 @@ void Simulation::run()
 					break;
 
 				case Keyboard::Home:
-					controlPanel.healthUpdate(false);
+					controlPanel.changeMaxHealth(-1);
 					break;
 
 				case Keyboard::End:
-					controlPanel.healthUpdate(true);
+					controlPanel.changeMaxHealth(1);
 					break;
 
 				case Keyboard::PageUp:
-					controlPanel.lifeLengthUpdate(false);
+					controlPanel.changeLifeLenght(-1);
 					break;
 
 				case Keyboard::PageDown:
-					controlPanel.lifeLengthUpdate(true);
+					controlPanel.changeLifeLenght(1);
 					break;
 
 				case Keyboard::Divide:
-					controlPanel.adulthoodUpdate(false);
+					controlPanel.changeAdulthoodAge(-1);
 					break;
 
 				case Keyboard::Multiply:
-					controlPanel.adulthoodUpdate(true);
+					controlPanel.changeAdulthoodAge(1);
 					break;
 
 				case Keyboard::Numpad8:
-					controlPanel.transformUpdate(false);
+					controlPanel.changeTransformAge(-1);
 					break;
 
 				case Keyboard::Numpad9:
-					controlPanel.transformUpdate(true);
+					controlPanel.changeTransformAge(1);
 					break;
 
 				case Keyboard::Numpad5:
-					controlPanel.broodUpdate(false);
+					controlPanel.changeMaxBrood(-1);
 					break;
 
 				case Keyboard::Numpad6:
-					controlPanel.broodUpdate(true);
+					controlPanel.changeMaxBrood(1);
 					break;
 
 				case Keyboard::Numpad2:
-					controlPanel.fertilityUpdate(false);
+					controlPanel.changeFertility(-1);
 					break;
 
 				case Keyboard::Numpad3:
-					controlPanel.fertilityUpdate(true);
+					controlPanel.changeFertility(1);
 					break;
 
 				case Keyboard::Subtract:
-					controlPanel.terrainRegUpdate(false);
+					controlPanel.changeTerrainRegTime(-1);
 					break;
 
 				case Keyboard::Add:
-					controlPanel.terrainRegUpdate(true);
+					controlPanel.changeTerrainRegTime(1);
 					break;
 				}
 			}
