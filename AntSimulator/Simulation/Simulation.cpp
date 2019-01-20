@@ -1,7 +1,5 @@
 #include "Simulation.h"
 
-
-
 Simulation::Simulation()
 	: window(VideoMode(___WIDTH___ + 300, ___HEIGHT___), "Ant Simulator", Style::Close)
 {
@@ -107,13 +105,11 @@ void Simulation::run()
 
 		if (timer >= ___SPEED___ && timer % ___SPEED___ == 0 && state == true)
 		{
-			cout << "Round #" << timer / ___SPEED___ << endl;
 			antColony.antListGetNewPosition(terrain.getMap());
 			antColony.antListReproduce();
 			antColony.littleAntListGetNewPosition(terrain.getMap());
 			terrain.updateMap();
 			antColony.larvaListUpdate();
-			cout << endl << endl;
 		}
 
 		antColony.littleAntListUpdatePosition(deltaTime);

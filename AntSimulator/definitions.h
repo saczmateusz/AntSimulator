@@ -1,9 +1,7 @@
 #pragma once
+
 #include <SFML\Graphics.hpp>
-#include <cstdlib>
 #include <list>
-#include <ctime>
-#include <iostream>
 #include "Parameters.h"
 
 using namespace std;

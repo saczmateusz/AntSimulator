@@ -11,10 +11,6 @@ public:
 	~Simulation();
 	void run();
 
-private:
-
-
-public:
 	unsigned long long timer = 0;
 	RenderWindow window;
 	Clock clock;
@@ -30,8 +26,5 @@ public:
 
 	float deltaTime;
 	char currDirection;
-
-private:
-
 };
 

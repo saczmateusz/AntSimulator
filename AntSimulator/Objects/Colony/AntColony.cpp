@@ -28,8 +28,6 @@ void AntColony::antListGetNewPosition(list<Terrain>& map)
 	{
 		if (it->getHealth() > Parameters::AntMaxHealth)
 			it->health = Parameters::AntMaxHealth;
-		cout << "Ant age: " << it->age << endl;
-		cout << "Ant HP: " << it->getHealth() << endl;
 		list<Terrain>::iterator tile = map.begin();
 		advance(tile, ((___WIDTH___ / 50) * (it->getPosition().y / 50) + (it->getPosition().x / 50)));
 		if (tile->checkTile())
@@ -48,7 +46,6 @@ void AntColony::antListGetNewPosition(list<Terrain>& map)
 			}
 			else
 			{
-				cout << "ant died\n";
 				it = antList.erase(it);
 			}
 		}
