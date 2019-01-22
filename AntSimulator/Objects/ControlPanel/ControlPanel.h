@@ -23,4 +23,3 @@ private:
 	Texture texture;
 	TextField parameters[7];
 };
-

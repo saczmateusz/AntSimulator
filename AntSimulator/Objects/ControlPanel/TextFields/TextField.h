@@ -1,6 +1,5 @@
 #pragma once
 #include "../../Object.h"
-#include <string>
 
 class TextField : public Object
 {
@@ -15,4 +14,3 @@ private:
 	Text textField;
 	
 };
-

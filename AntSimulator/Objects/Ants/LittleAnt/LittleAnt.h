@@ -27,4 +27,3 @@ public:
 	char direction;
 	unsigned int age;
 };
-

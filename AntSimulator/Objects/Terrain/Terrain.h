@@ -13,8 +13,7 @@ public:
 
 private:
 	Terrain(Texture *texture, Vector2f position);
-	void switchTile(bool factor);
-	bool texRand();
+	void switchTile(const bool factor);
 
 private:
 	list<Terrain> terrainMap;

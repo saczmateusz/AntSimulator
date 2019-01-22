@@ -23,14 +23,12 @@ void AntColony::antListCreate()
 
 void AntColony::antListGetNewPosition(list<Terrain>& map)
 {
-	list<Ant>::iterator it = antList.begin();
+	auto it = antList.begin();
 	while (it != antList.end())
 	{
 		if (it->getHealth() > Parameters::AntMaxHealth)
 			it->health = Parameters::AntMaxHealth;
-		cout << "Ant age: " << it->age << endl;
-		cout << "Ant HP: " << it->getHealth() << endl;
-		list<Terrain>::iterator tile = map.begin();
+		auto tile = map.begin();
 		advance(tile, ((___WIDTH___ / 50) * (it->getPosition().y / 50) + (it->getPosition().x / 50)));
 		if (tile->checkTile())
 			it->changeHealth(-1);
@@ -48,7 +46,7 @@ void AntColony::antListGetNewPosition(list<Terrain>& map)
 			}
 			else
 			{
-				cout << "ant died\n";
+				cout << "Ant of age " << it->age << " died\n";
 				it = antList.erase(it);
 			}
 		}
@@ -59,11 +57,11 @@ void AntColony::antListGetNewPosition(list<Terrain>& map)
 
 void AntColony::antListReproduce()
 {
-	for (list<Ant>::iterator it = antList.begin(); it != antList.end(); ++it)
+	for (auto it = antList.begin(); it != antList.end(); ++it)
 	{
 		if (it->fertility >= Parameters::AntMinFertility)
 		{
-			for (list<Ant>::iterator prev = antList.begin(); prev != it; ++prev)
+			for (auto prev = antList.begin(); prev != it; ++prev)
 			{
 				if (it->getPosition() == prev->getPosition() && prev->fertility >= Parameters::AntMinFertility)
 				{
@@ -78,27 +76,27 @@ void AntColony::antListReproduce()
 
 void AntColony::antListUpdatePosition(float deltaTime)
 {
-	for (list<Ant>::iterator it = antList.begin(); it != antList.end(); it++)
-		it->moveToFixedPosition(deltaTime, it->nextPosition);
+	for (auto& it : antList)
+		it.moveToFixedPosition(deltaTime, it.nextPosition);
 }
 
 void AntColony::antListDraw(RenderWindow & window)
 {
-	for (list<Ant>::iterator it = antList.begin(); it != antList.end(); it++)
+	for (auto it : antList)
 	{
-		it->draw(window);
+		it.draw(window);
 	}
 }
 
 void AntColony::larvaListAdd(Vector2f position)
 {
-	Larva larva(&larvaTexture, position);
+	const Larva larva(&larvaTexture, position);
 	larvaList.push_back(larva);
 }
 
 void AntColony::larvaListUpdate()
 {
-	list<Larva>::iterator it = larvaList.begin();
+	auto it = larvaList.begin();
 	while (it != larvaList.end())
 	{
 		if (it->nextStage())
@@ -117,20 +115,20 @@ void AntColony::larvaListUpdate()
 
 void AntColony::larvaListDraw(RenderWindow & window)
 {
-	for (list<Larva>::iterator it = larvaList.begin(); it != larvaList.end(); it++)
+	for (auto& it : larvaList)
 	{
-		it->draw(window);
+		it.draw(window);
 	}
 }
 
 void AntColony::littleAntListGetNewPosition(list<Terrain>& map)
 {
-	list<LittleAnt>::iterator it = littleAntList.begin();
+	auto it = littleAntList.begin();
 	while (it != littleAntList.end())
 	{
 		if (it->getHealth() > Parameters::AntMaxHealth)
 			it->health = Parameters::AntMaxHealth;
-		list<Terrain>::iterator tile = map.begin();
+		auto tile = map.begin();
 		advance(tile, ((___WIDTH___ / 50) * (it->getPosition().y / 50) + (it->getPosition().x / 50)));
 		if (tile->checkTile())
 			it->changeHealth(-1);
@@ -157,19 +155,20 @@ void AntColony::littleAntListGetNewPosition(list<Terrain>& map)
 
 void AntColony::littleAntListUpdatePosition(float deltaTime)
 {
-	for (list<LittleAnt>::iterator it = littleAntList.begin(); it != littleAntList.end(); it++)
-		it->moveToFixedPosition(deltaTime, it->nextPosition);
+	for (auto& it : littleAntList)
+		it.moveToFixedPosition(deltaTime, it.nextPosition);
 }
 
 void AntColony::littleAntListDraw(RenderWindow & window)
 {
-	for (list<LittleAnt>::iterator it = littleAntList.begin(); it != littleAntList.end(); it++)
+	for (auto& it : littleAntList)
 	{
-		it->draw(window);
+		it.draw(window);
 	}
 }
 
 Vector2f AntColony::randomPosition()
 {
-	return Vector2f(float((rand() % (___WIDTH___ / 50)) * 50), float((rand() % (___HEIGHT___ / 50)) * 50));
+	return { float((rand() % (___WIDTH___ / 50)) * 50),
+			float((rand() % (___HEIGHT___ / 50)) * 50) };
 }

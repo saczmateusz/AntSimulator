@@ -37,29 +37,27 @@ void Terrain::createMap(Texture *texture)
 
 void Terrain::drawMap(RenderWindow &window)
 {
-	for (list<Terrain>::iterator it = terrainMap.begin(); it != terrainMap.end(); it++)
-		it->draw(window);
+	for (auto& it : terrainMap)
+		it.draw(window);
 }
 
 void Terrain::updateMap()
 {
-	for (list<Terrain>::iterator it = terrainMap.begin(); it != terrainMap.end(); it++)
+	for (auto& it : terrainMap)
 	{
-		if (it->cooldown == 0)
-			it->switchTile(false);
-		else if (it->cooldown > 0)
-			--(it->cooldown);
+		if (it.cooldown == 0)
+			it.switchTile(false);
+		else if (it.cooldown > 0)
+			--(it.cooldown);
 	}
 }
 
 bool Terrain::checkTile()
 {
-	if (cooldown == -1)
-	{
-		switchTile(true);
-		return false;
-	}
-	else return true;
+	if (cooldown != -1)
+		return true;
+	switchTile(true);
+	return false;
 }
 
 list<Terrain> &Terrain::getMap()
@@ -67,16 +65,11 @@ list<Terrain> &Terrain::getMap()
 	return terrainMap;
 }
 
-void Terrain::switchTile(bool factor)
+void Terrain::switchTile(const bool factor)
 {
 	tRect.left = factor * tRect.width;
 	body.setTextureRect(tRect);
 	if (factor)
 		cooldown = Parameters::TerrainRegTime;
 	else cooldown = -1;
-}
-
-bool Terrain::texRand()
-{
-	return rand() % 2;
 }

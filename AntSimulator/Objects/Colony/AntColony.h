@@ -32,4 +32,3 @@ private:
 	Texture littleAntTexture;
 	Texture larvaTexture;
 };
-
